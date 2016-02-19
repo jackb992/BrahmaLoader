@@ -75,7 +75,7 @@ s32 voodoo_load(const char* path, u32 offset, u32 msize, u32 voodoo) {
     
     // actually load the payload, for once
     if (path && path[0] != '\0') {
-        res = load_arm9_payload(path, offset, msize);
+        res = load_arm9_payload_offset(path, offset, msize);
         if (!res) error_show("[+] payload: %s@%X\n[+] maximum size: %X\n[!] Loading failed!", path, offset, msize);
     }
     #ifndef PAYLOAD_PATH
