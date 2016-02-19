@@ -79,7 +79,7 @@ LIBDIRS	:= $(CTRULIB)
 ifneq ($(BUILD),$(notdir $(CURDIR)))
 #---------------------------------------------------------------------------------
 
-export OUTPUT_D	:=	$(CURDIR)/output
+export OUTPUT_D	:=	$(CURDIR)/convert
 export OUTPUT_N	:=	$(subst $(SPACE),,$(APP_TITLE))
 export OUTPUT	:=	$(OUTPUT_D)/$(OUTPUT_N)
 
