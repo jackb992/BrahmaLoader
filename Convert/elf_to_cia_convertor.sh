@@ -20,4 +20,3 @@ echo Building CIA
 echo CIA Made succesfully!
 echo Install Decrypt9WIP-CIA.cia
 read -n1 -r -p "Press any key to exit..."
-exit
