@@ -217,16 +217,17 @@ s32 load_arm9_payload_offset (char *filename, u32 offset, u32 max_psize) {
    data: array of u8 containing the payload
    dsize: size of the data array
    returns: 0 on failure, 1 on success */
-s32 load_arm9_payload_from_mem (u8* data, u32 dsize) {
-	s32 result = 0;
+s32 firm_reboot (void) {
+        s32 fail_stage = 0;
 
-	if ((data != NULL) && (dsize >= 8) && (dsize <= ARM9_PAYLOAD_MAX_SIZE)) {
-		g_ext_arm9_size = dsize;
-		memcpy(g_ext_arm9_buf, data, dsize);
-		result = g_ext_arm9_loaded = 1;
-	}
+        fail_stage++; /* platform or firmware not supported, ARM11 exploit failure */
+        if (setup_exploit_data()) {
+                fail_stage += 2; /* Firmlaunch failure, ARM9 exploit failure*/
+                svcBackdoor(priv_firm_reboot);
+        }
 
-	return result;
+        /* we do not intend to return ... */
+        return fail_stage;
 }
 
 /* copies ARM9 payload to FCRAM
