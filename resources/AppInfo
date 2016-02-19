@@ -37,11 +37,11 @@
 #  0b100000/0x20 => Use this fix for the top screen
 #---------------------------------------------------------------------------------
 
-APP_TITLE = BrahmaLoader
-APP_DESCRIPTION = Brahma based loader.
+APP_TITLE = Decrypt9WIP
+APP_DESCRIPTION = Decrypt9WIP
 APP_AUTHOR = patois, delebile & d0k3
 
-# PAYLOAD_PATH = //payload.bin
+# PAYLOAD_PATH = //Decrypt9WIP.bin
 # PAYLOAD_OFFSET = 0x00000000
 # PAYLOAD_MAXSIZE = 0x00000000
 # PAYLOAD_MEM = 1
