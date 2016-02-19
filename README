@@ -1,2 +1,33 @@
 1. Run make
 2. Run Bash Script if Linux/Mac or Run .bat file if Windows
+
+Credits:
+Thanks to all of these people:
+  BrahmaLoader:  
+To 3dbrew.org and all its contributors for being such a great resource
+To whomever initially found the vulnerabilities and wrote the publicly
+available exploit code
+To everybody who's been working on porting this exploit and its various
+"bootstrap" branches to newer firmware versions and improving its stability
+(in particular yifanlu, yuriks and shinyquagsire23)
+To everybody involved in creating libctru, Ninjhax and the Homebrew Menu
+d0k3
+  Decrypt9WIP:
+Roxas75 for the method of ARM9 code injection
+Cha(N), Kane49, and all other FatFS contributors for FatFS
+Normmatt for sdmmc.c as well as project infrastructure (Makefile, linker setup, etc)
+Relys, sbJFn5r for the decryptor
+Archshift for starting this project and being a great project maintainer
+patois, delebile, SteveIce10 for Brahma and it's updates
+mid-kid for CakeHax
+Shadowtrance, dark_samus3, Syphurith for being of great help developing this
+profi200 for helpful hints that first made developing some features possible
+Datalogger, zoogie, atkfromabove, mixups, key1340, k8099 and countless others from the GBAtemp forums for testing, feedback and helpful hints
+d0k3
+  Convert Script:
+FebruarySnow
+1000pcrack
+  Converting to CIA:
+Mrrraou
+
+  
