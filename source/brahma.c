@@ -217,17 +217,16 @@ s32 load_arm9_payload_offset (char *filename, u32 offset, u32 max_psize) {
    data: array of u8 containing the payload
    dsize: size of the data array
    returns: 0 on failure, 1 on success */
-s32 firm_reboot (void) {
-        s32 fail_stage = 0;
+s32 load_arm9_payload_from_mem (u8* data, u32 dsize) {
+	s32 result = 0;
 
-        fail_stage++; /* platform or firmware not supported, ARM11 exploit failure */
-        if (setup_exploit_data()) {
-                fail_stage += 2; /* Firmlaunch failure, ARM9 exploit failure*/
-                svcBackdoor(priv_firm_reboot);
-        }
+	if ((data != NULL) && (dsize >= 8) && (dsize <= ARM9_PAYLOAD_MAX_SIZE)) {
+		g_ext_arm9_size = dsize;
+		memcpy(g_ext_arm9_buf, data, dsize);
+		result = g_ext_arm9_loaded = 1;
+	}
 
-        /* we do not intend to return ... */
-        return fail_stage;
+	return result;
 }
 
 /* copies ARM9 payload to FCRAM
@@ -359,17 +358,14 @@ s32 priv_firm_reboot (void) {
    function. otherwise, calling this function simply reboots
    the handheld */
 s32 firm_reboot (void) {
-	s32 fail_stage = 0;
+        s32 fail_stage = 0;
 
-	fail_stage++; /* platform or firmware not supported, ARM11 exploit failure */
-	if (setup_exploit_data()) {
-		fail_stage++; /* failure while trying to corrupt svcCreateThread() */
-		if (khaxInit() == 0) {
-			fail_stage++; /* Firmlaunch failure, ARM9 exploit failure*/
-			svcBackdoor(priv_firm_reboot);
-		}
-	}
+        fail_stage++; /* platform or firmware not supported, ARM11 exploit failure */
+        if (setup_exploit_data()) {
+                fail_stage += 2; /* Firmlaunch failure, ARM9 exploit failure*/
+                svcBackdoor(priv_firm_reboot);
+        }
 
-	/* we do not intend to return ... */
-	return fail_stage;
+        /* we do not intend to return ... */
+        return fail_stage;
 }
